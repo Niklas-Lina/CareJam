@@ -1,0 +1,35 @@
+:: S1_= Hey! what's going on over here?! {"position":"981.5,425.5","size":"100,100"}
+&He's playing wrong with the toys!*& Dolls are only for girls!*
+
+
+[[Why don't you come with me and play with the cars instead Billy?|S1_00]]
+[[Do you want to play with the dolls too Adam?|S1_01]]
+[[Anyone can play with dolls, there aren't toys that only girls or boys can play with|S1_02]]
+
+:: S1_00 {"position":"795.5,595.5","size":"100,100"}
+%I don't like cars, I want to play with the baby.
+
+
+[[Maybe you and Adam can play together with the doll?|S1_01]]
+[[No, the dolls are for the girls. Find something else to play with|S1_03]]
+
+:: S1_01 {"position":"981.5,601.5","size":"100,100"}
+&I'm not a girl!*& I don't want to play with dolls!*%Babies have daddies too!
+
+[[I think Adam is right Billy. Daddies go to work, they don't stay home with the babies|S1_04]]
+[[That's right Billy. Why don't you both play daddies with the dolls?|S1_02]]
+
+:: S1_02 {"position":"1162.5,596.5","size":"100,100"}
+&If I'm the daddy, I want to take the baby to the park*%My baby wants to go to the park too!
+
+
+[[That's great! You can have fun with any toys you want here|S1_05]]
+
+:: S1_03 {"position":"795.5,744.5","size":"100,100"}
+<I feel distant from my girlfriend and daughter. Women in general feel foreign to me, and I'm uncomfortable connecting with them unless it's for sex."Adam">
+
+:: S1_04 {"position":"983.5,743.5","size":"100,100"}
+<I feel preassured to maintain a provider role in my family. I'm always stressed about not being a real man who can support his wife and children."Adam">
+
+:: S1_05 {"position":"1177.5,741.5","size":"100,100"}
+<I love being a dad. I feel close to my daughter and me and my wife are good at communicating what we need from eachother."Adam">
