@@ -18,7 +18,7 @@ public class DisplayDialogue : MonoBehaviour
     AudioSource Audio;
     public AudioClip ClientVoice;
     public AudioClip PlayerVoice;
-    public Image readyButton;
+    //public Image readyButton;
 
     GameObject startQ;
 
@@ -56,7 +56,7 @@ public class DisplayDialogue : MonoBehaviour
 
     private void Update()
     {
-        readyButton.enabled = canClick;
+        //readyButton.enabled = canClick;
 
         if (Kid != null)
         {
@@ -238,17 +238,12 @@ public class DisplayDialogue : MonoBehaviour
         Kid = kid;
         CD = Kid.GetComponent<KidDialogueData>().currentConflict;
 
-        //Att se om nagon "pratar"
-        /*
-        if (!GC.Talking)
-        {
-            GC.Talking = true;
             startQ = createQuestion(CD.Opener);
             startQ.GetComponent<Button>().onClick.AddListener(delegate { StartSession(CD); });
             CD.currentNode = CD.pathNodes[0];
             currentNode = CD.pathNodes[0];
             Debug.Log(CD.pathNodes[0].KidTxt);
-        }*/
+
 
     }
 
@@ -269,7 +264,7 @@ public class DisplayDialogue : MonoBehaviour
         }
         KidsTxt = currentBubble.GetComponentInChildren<Text>();
         currentBubble.gameObject.SetActive(true);
-        readyButton.transform.SetParent(currentBubble);
+        //readyButton.transform.SetParent(currentBubble);
     }
 
 }
