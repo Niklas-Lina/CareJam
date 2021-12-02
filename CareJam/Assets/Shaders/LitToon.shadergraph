@@ -2883,7 +2883,7 @@
 }
 
 {
-    "m_SGVersion": 2,
+    "m_SGVersion": 3,
     "m_Type": "UnityEditor.ShaderGraph.Internal.ColorShaderProperty",
     "m_ObjectId": "d0797d46cd71b78283d1708a5220ba83",
     "m_Guid": {
@@ -2891,7 +2891,7 @@
     },
     "m_Name": "Tint",
     "m_DefaultReferenceName": "Color_2B4D5406",
-    "m_OverrideReferenceName": "",
+    "m_OverrideReferenceName": "_Color",
     "m_GeneratePropertyBlock": true,
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
