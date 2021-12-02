@@ -194,7 +194,7 @@ public class DisplayDialogue : MonoBehaviour
         txtDone = false;
         int index = 0;
         string colorTag = "<color=#00000000>";
-        //Ifall 
+        //Ifall face shader
         /*
         if (Faces != null)
         { Faces.talking = true; } */
@@ -238,12 +238,12 @@ public class DisplayDialogue : MonoBehaviour
         Kid = kid;
         CD = Kid.GetComponent<KidDialogueData>().currentConflict;
 
+
             startQ = createQuestion(CD.Opener);
             startQ.GetComponent<Button>().onClick.AddListener(delegate { StartSession(CD); });
             CD.currentNode = CD.pathNodes[0];
             currentNode = CD.pathNodes[0];
             Debug.Log(CD.pathNodes[0].KidTxt);
-
 
     }
 
