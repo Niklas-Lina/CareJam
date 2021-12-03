@@ -29,6 +29,7 @@ public class PlayerMotor : MonoBehaviour
 
             distanceToTarget = Vector3.Distance(target.position, transform.position);
             
+            //Only use the playerLookAtTransform when inside a certain distance
             if(distanceToTarget < targetRadius)
             {
                 agent.updateRotation = false; // dont use the navmesh system for rotation when following an interactable
@@ -60,7 +61,7 @@ public class PlayerMotor : MonoBehaviour
         agent.stoppingDistance = newTarget.radius * 0.8f;
         
 
-        target = newTarget.playerPoint;
+        target = newTarget.interactionPoint;
         lookAt = newTarget.playerLookAtTransform;
         targetRadius = newTarget.radius;
     }

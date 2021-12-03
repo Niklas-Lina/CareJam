@@ -6,15 +6,29 @@ public class Interactable : MonoBehaviour
 {
     [Tooltip("the radius for player interaction")]
     public float radius = 3f;
-    [Tooltip("where the player should try to move to, can be another gameobject than the interactable")]
-    public Transform playerPoint;
+    [Tooltip("the point the player moves to, can be another transform than the interactable")]
+    public Transform interactionPoint;
+    [Tooltip("The point towards the player looks when inside the radius")]
     public Transform playerLookAtTransform;
+
+    // interaction variables
+    bool isFocus = false;
+    Transform player;
+
+    bool hasInteracted = false;
+
+
+    public virtual void Interact()
+    {
+        //This method is ment to be overridden
+        Debug.Log("INTERACT with : " + gameObject.name);
+    }
 
     private void Start()
     {
-        if(playerPoint == null)
+        if(interactionPoint == null)
         {
-            playerPoint = gameObject.transform;
+            interactionPoint = gameObject.transform;
         }
 
         if (playerLookAtTransform == null)
@@ -23,12 +37,41 @@ public class Interactable : MonoBehaviour
         }
     }
 
+
+    private void Update()
+    {
+        if(isFocus && hasInteracted == false)
+        {
+            float distance = Vector3.Distance(interactionPoint.position, player.position);
+            //If the player is within the interactable radius interact
+            if (distance <= radius)
+            {
+                Interact();
+                hasInteracted = true;
+            }
+        }
+    }
+
+    public void OnFocused(Transform playerTransform)
+    {
+        isFocus = true;
+        player = playerTransform;
+        hasInteracted = false;
+    }
+
+    public void OnDefocus()
+    {
+        isFocus = false;
+        player = null;
+        hasInteracted = false;
+    }
+
     private void OnDrawGizmosSelected()
     {
-        if(playerPoint != null)
+        if(interactionPoint != null)
         {
             Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(playerPoint.position, radius);
+            Gizmos.DrawWireSphere(interactionPoint.position, radius);
         }
         else
         {

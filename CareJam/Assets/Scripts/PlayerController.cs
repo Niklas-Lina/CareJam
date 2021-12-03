@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerMotor))]
 public class PlayerController : MonoBehaviour
 {
-    public Interactable interactableFocus;
+    public Interactable focus;
 
     public LayerMask layermaskMovement;
 
@@ -62,19 +62,32 @@ public class PlayerController : MonoBehaviour
 
         void SetFocus(Interactable newFocus)
         {
-            interactableFocus = newFocus;
+            if(newFocus != focus)
+            {
+                if(focus != null)
+                {
+                    focus.OnDefocus();
+                }
 
-            //simple for stationary objects
-            //playerMotor.MoveToPoint(interactableFocus.playerPoint.position);
+                focus = newFocus; // new interactable focus gets set
+                playerMotor.FollowTarget(newFocus); // make the player Motor track the interactable, works with moving interactables
+            }
+            
+            // notify the interactable every time we click on it
+            newFocus.OnFocused(transform); // Send the player transform to the interactable object
+            
 
-            // for folowing dynamic objects
-            playerMotor.FollowTarget(newFocus);
         }
 
         void RemoveFocus()
         {
+            if(focus != null)
+            {
+                focus.OnDefocus(); // interactable sould stop tracking the players position.
+            }
+
             playerMotor.StopFollowingTarget();
-            interactableFocus = null;
+            focus = null;
         }
 
     }
