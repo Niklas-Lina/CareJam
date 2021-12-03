@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 3053107165106539974}
   - component: {fileID: 3053107165106539973}
   - component: {fileID: 3053107165106539977}
+  - component: {fileID: 1958369669}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -170,11 +171,11 @@ NavMeshAgent:
   m_GameObject: {fileID: 3053107165106539972}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3
-  m_Acceleration: 20
+  m_Radius: 0.4
+  m_Speed: 2
+  m_Acceleration: 10
   avoidancePriority: 50
-  m_AngularSpeed: 500
+  m_AngularSpeed: 1200
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -190,10 +191,10 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3053107165106539972}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 6925c7fb102cc2a4fabef0379ea8322b, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.4
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
@@ -210,7 +211,7 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!114 &3053107165106539977
@@ -225,6 +226,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5377d57fe9811d14ca982fca09601122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactableFocus: {fileID: 0}
   layermaskMovement:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &1958369669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3053107165106539972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dab67ffa3ffca5409263c43715542f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  angularFollowRotationSpeed: 3
