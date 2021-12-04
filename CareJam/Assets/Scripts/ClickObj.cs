@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class ClickObj : MonoBehaviour
 {
-    public RectTransform OptionPanel;
+    public Talking talk;
 
     private void Start()
     {
         //Inga options ska synnas i borjan av spelet
-        OptionPanel.gameObject.SetActive(false);
     }
 
     void Update()
@@ -26,7 +25,8 @@ public class ClickObj : MonoBehaviour
             {
                 if (hit.transform == transform)
                 {
-                    OptionPanel.gameObject.SetActive(true);
+                    talk.gameObject.SetActive(true);
+                    talk.StartSession();
 
                 }
 
