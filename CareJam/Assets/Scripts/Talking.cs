@@ -14,21 +14,19 @@ public class Talking : MonoBehaviour
     AudioSource Audio;
     public AudioClip Voice;
     int currentOpt = 0;
+    bool end = false;
 
     private void Start()
     {
         txt = transform.GetComponentInChildren<Text>();
-        Debug.Log(txt.gameObject.name);
         OptionsPanel.SetActive(false);
         gameObject.SetActive(false);
     }
 
-    public void StartSession()
+    public void StartSession(int nr)
     {
-        Debug.Log(talk[0].line);
-
-        StartCoroutine(TypeText(talk[currentOpt].line, txt, Voice));
-
+        string firstLine = talk[nr].line;
+        StartCoroutine(TypeText(firstLine, txt, Voice));
 
     }
 
@@ -41,18 +39,39 @@ public class Talking : MonoBehaviour
         }
     }
 
+    public void Answer(int nr)
+    {
+        StartCoroutine(TypeText(talk[currentOpt].Answers[nr], txt, Voice));
+        //Ga vidare till nasta options
+        currentOpt++;
+    }
+
 
     IEnumerator TypeText(string message, Text txtObj, AudioClip voice)
     {
         canClick = false;
         txtDone = false;
+        //sa att inga gamla options syns
+        foreach (Transform child in OptionsPanel.transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+        //Texten borjar fran 0
         int index = 0;
+        //Allt ar genomskinligt i borjan
         string colorTag = "<color=#00000000>";
-        //Ifall face shader
-        /*
-        if (Faces != null)
-        { Faces.talking = true; } */
-        float pause = 0.03f;
+
+        if (message.Contains("*"))
+        {
+            end = true;
+            message = message.Remove(message.Length - 1);
+        }
+
+            //Ifall face shader
+            /*
+            if (Faces != null)
+            { Faces.talking = true; } */
+            float pause = 0.03f;
         txtObj.text = "";
 
         if (voice != null)
@@ -81,8 +100,17 @@ public class Talking : MonoBehaviour
         canClick = true;
         //Faces.talking = false;
 
-        ShowOptions(talk[currentOpt]);
-        currentOpt++;
+        //@ at the end means no more options
+        if (!end)
+        { ShowOptions(talk[currentOpt]); }
+
+        //om slut, ta bort bubbla efter 3 sekunder
+        if(end)
+        { 
+            new WaitForSeconds(3);
+            gameObject.SetActive(false);
+
+        }
         yield return 0;
     }
 

@@ -5,6 +5,7 @@ using UnityEngine;
 public class ClickObj : MonoBehaviour
 {
     public Talking talk;
+    bool clicked = false;
 
     private void Start()
     {
@@ -15,7 +16,7 @@ public class ClickObj : MonoBehaviour
     {
 
         // se om musen ar i omradet
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && !clicked)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -26,7 +27,8 @@ public class ClickObj : MonoBehaviour
                 if (hit.transform == transform)
                 {
                     talk.gameObject.SetActive(true);
-                    talk.StartSession();
+                    talk.StartSession(0);
+                    clicked = true;
 
                 }
 
