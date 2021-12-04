@@ -10,6 +10,7 @@ public class CharacterAnimator : MonoBehaviour
     Animator animator;
     NavMeshAgent agent;
     
+    // Player Character animatior
 
     private void Start()
     {

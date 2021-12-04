@@ -64,6 +64,9 @@ public class Interactable : MonoBehaviour
         isFocus = false;
         player = null;
         hasInteracted = false;
+
+        //TODO - cleanup walk trigger?
+        //GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Animator>().SetTrigger("Walk"); // for forcing animations on the player to stop,  BUGGY
     }
 
     private void OnDrawGizmosSelected()

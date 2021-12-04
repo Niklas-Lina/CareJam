@@ -11,10 +11,17 @@ public class _nf_test : Interactable
     [SerializeField] MaterialPropertyBlock materialPropertyBlock;
     [SerializeField] Renderer renderer;
 
+
     public override void Interact()
     {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player.GetComponentInChildren<Animator>().SetTrigger("Wave");
+        
+        //  TODO abort animation when klicking walk again.
+        //player.GetComponentInChildren<Animator>().ResetTrigger("Wave");
+
         ChangeColor();
-        //base.Interact();
+        base.Interact();
     }
 
     private void Start()

@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
             RaycastHit hit;
 
             if(Physics.Raycast(ray,out hit,200f,layermaskMovement))
-            {
+            {   
                 // Move the player to what we hit
                 //Debug.Log("We hit " + hit.collider.gameObject.name + "  " + hit.point);
                 
@@ -84,6 +84,8 @@ public class PlayerController : MonoBehaviour
             if(focus != null)
             {
                 focus.OnDefocus(); // interactable sould stop tracking the players position.
+                
+
             }
 
             playerMotor.StopFollowingTarget();
