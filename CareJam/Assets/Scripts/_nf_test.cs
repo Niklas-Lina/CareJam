@@ -8,6 +8,8 @@ public class _nf_test : Interactable
 
     //Change Base color of material during runtime.
     public Color color;
+    public Color[] colorArray;
+
     [SerializeField] MaterialPropertyBlock materialPropertyBlock;
     [SerializeField] Renderer renderer;
 
@@ -16,11 +18,13 @@ public class _nf_test : Interactable
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponentInChildren<Animator>().SetTrigger("Wave");
-        
+
         //  TODO abort animation when klicking walk again.
         //player.GetComponentInChildren<Animator>().ResetTrigger("Wave");
 
-        ChangeColor();
+        //ChangeColor();
+        RandomColor();
+
         base.Interact();
     }
 
@@ -41,5 +45,24 @@ public class _nf_test : Interactable
         // Both works
 
         //renderer.material.SetColor("_BaseColor", color);
+    }
+
+    private void RandomColor()
+    {
+        //Change Color Chache
+        materialPropertyBlock = new MaterialPropertyBlock();
+
+        if (colorArray != null)
+        {
+            int randomNumber = Random.Range(0, colorArray.Length);
+            Debug.Log(randomNumber);
+
+            color = colorArray[randomNumber];
+        }
+
+        materialPropertyBlock.SetColor("_BaseColor", color);
+
+        renderer.SetPropertyBlock(materialPropertyBlock);
+
     }
 }
