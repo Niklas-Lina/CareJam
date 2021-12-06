@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class ClickObj : MonoBehaviour
 {
-    public RectTransform OptionPanel;
+    public Talking talk;
+    bool clicked = false;
 
     private void Start()
     {
         //Inga options ska synnas i borjan av spelet
-        OptionPanel.gameObject.SetActive(false);
     }
 
     void Update()
     {
 
         // se om musen ar i omradet
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && !clicked)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -26,7 +26,9 @@ public class ClickObj : MonoBehaviour
             {
                 if (hit.transform == transform)
                 {
-                    OptionPanel.gameObject.SetActive(true);
+                    talk.gameObject.SetActive(true);
+                    talk.StartSession(0);
+                    clicked = true;
 
                 }
 
