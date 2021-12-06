@@ -26,29 +26,21 @@ public class Talking : MonoBehaviour
     public void StartSession(int nr)
     {
         string firstLine = talk[nr].line;
-        StartCoroutine(TypeText(firstLine, txt, Voice));
+        StartCoroutine(TypeText(firstLine, txt, Voice, 0));
 
-    }
-
-    public void Update()
-    {
-        if (Input.GetMouseButtonDown(0) && canClick && txtDone)
-        {
-
-
-        }
     }
 
     public void Answer(int nr)
     {
-        StartCoroutine(TypeText(talk[currentOpt].Answers[nr], txt, Voice));
+        StartCoroutine(TypeText(talk[currentOpt].Answers[nr], txt, Voice, talk[currentOpt].Pause[nr]));
         //Ga vidare till nasta options
         currentOpt++;
     }
 
 
-    IEnumerator TypeText(string message, Text txtObj, AudioClip voice)
+    IEnumerator TypeText(string message, Text txtObj, AudioClip voice, int startPause)
     {
+        yield return new WaitForSeconds(startPause);
         canClick = false;
         txtDone = false;
         //sa att inga gamla options syns
@@ -86,7 +78,7 @@ public class Talking : MonoBehaviour
             txtObj.text = txt;
             index++;
 
-            if (txt.EndsWith(".") || txt.EndsWith("."))
+            if (txt.EndsWith(".") || txt.EndsWith("!") || txt.EndsWith("?"))
             {
                 pause = 0.5f;
 
@@ -107,7 +99,7 @@ public class Talking : MonoBehaviour
         //om slut, ta bort bubbla efter 3 sekunder
         if(end)
         { 
-            new WaitForSeconds(3);
+            yield return new WaitForSeconds(3);
             gameObject.SetActive(false);
 
         }
@@ -133,5 +125,6 @@ public class TalkOption
     public string line;
     public RectTransform[] options;
     public string[] Answers;
+    public int[] Pause;
 }
 
