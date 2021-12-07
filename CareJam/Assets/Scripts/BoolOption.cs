@@ -5,38 +5,29 @@ using UnityEngine.UI;
 
 public class BoolOption : MonoBehaviour
 {
-    public bool On;
-    public string Ontext;
-    public string Offtext;
-    Text txt;
+
+    Image img;
 
     private void Start()
     {
         //anvand text fran child
-        txt = transform.GetComponentInChildren<Text>();
+        img = transform.GetComponentInChildren<Image>();
     }
 
-    public void ChangeValue()
+    public void Swither(int time)
     {
-        On = !On;
-
-        if(On == true)
-        {
-            txt.text = Ontext;
-        }
-        else if (On != true)
-        {
-            txt.text = Offtext;
-        }
+        StartCoroutine(SwitchOnTime(time));
     }
 
-    public void LightSwitch(GameObject obj)
+    public IEnumerator SwitchOnTime(int time)
     {
-       if (obj.activeSelf)
+        yield return new WaitForSeconds(time);
+       if (img.isActiveAndEnabled)
         {
-            obj.SetActive(false);
+            img.enabled = false;
         }
-       else if (!obj.activeSelf)
-        { obj.SetActive(true); }
+       else if (!img.isActiveAndEnabled)
+        { img.enabled = true; }
+        yield return null;
     }
 }
