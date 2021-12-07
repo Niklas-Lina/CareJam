@@ -6,19 +6,29 @@ public class CharacterFaceSelector : MonoBehaviour
 {
     [SerializeField] bool tryingOutStyles;
 
-    [Header("SetUp")]
+    [Header("SetUp Meshes")]
     [SerializeField] SkinnedMeshRenderer[] skinMeshRenderer;
     [SerializeField] MeshRenderer[] hairMeshRenderer;
     [SerializeField] SkinnedMeshRenderer[] shirtMeshRenderer;
+    [SerializeField] SkinnedMeshRenderer[] pantsMeshRenderer;
+    [SerializeField] MeshRenderer[] noseMeshRenderer;
+    [SerializeField] MeshRenderer[] eyeWearMeshRenderer;
 
     [Header("Colors")]
     [SerializeField] int skinColorIndex;
     [SerializeField] int hairColorIndex;
     [SerializeField] int shirtColorIndex;
+    [SerializeField] int pantsColorIndex;
+    [SerializeField] int noseColorIndex;
+    [SerializeField] int eyeWearColorIndex;
 
     [SerializeField] List<Color> skinColorsList;
     [SerializeField] List<Color> hairColorsList;
     [SerializeField] List<Color> shirtColorList;
+    [SerializeField] List<Color> pantsColorList;
+    [SerializeField] List<Color> noseColorList;
+    [SerializeField] List<Color> eyeWearColorList;
+
 
     [Header("Apparance")]
     [SerializeField] int hairStyleIndex;
@@ -37,11 +47,6 @@ public class CharacterFaceSelector : MonoBehaviour
     [SerializeField] List<GameObject> beardList;
     [SerializeField] List<GameObject> mustachList;
 
-
-    Color currentHairColor;
-    Color currentSkincolor;
-    Color currentShirtColor;
-
     MaterialPropertyBlock materialPropertyBlock;
 
 
@@ -53,18 +58,23 @@ public class CharacterFaceSelector : MonoBehaviour
     private void UpdateApparance()
     {
         //Change Color
-        hairColorIndex = ValidateIndex(hairColorsList, hairColorIndex);
-        currentHairColor = hairColorsList[hairColorIndex];
-        ChangeColor(hairMeshRenderer, currentHairColor);
-
+        hairColorIndex = ValidateIndex(hairColorsList,hairColorIndex);
+        ChangeColor(hairMeshRenderer, hairColorsList,hairColorIndex);
+        
         skinColorIndex = ValidateIndex(skinColorsList, skinColorIndex);
-        currentSkincolor = skinColorsList[skinColorIndex];
-        ChangeColor(skinMeshRenderer, currentSkincolor);
-
+        ChangeColor(skinMeshRenderer, skinColorsList,skinColorIndex);
+        
         shirtColorIndex = ValidateIndex(shirtColorList, shirtColorIndex);
-        currentShirtColor = shirtColorList[shirtColorIndex];
-        ChangeColor(shirtMeshRenderer, currentShirtColor);
+        ChangeColor(shirtMeshRenderer, shirtColorList,shirtColorIndex);
+        
+        pantsColorIndex = ValidateIndex(pantsColorList, pantsColorIndex);
+        ChangeColor(pantsMeshRenderer, pantsColorList,pantsColorIndex);
+        
+        noseColorIndex = ValidateIndex(noseColorList, noseColorIndex);
+        ChangeColor(noseMeshRenderer, noseColorList, noseColorIndex);
 
+        eyeWearColorIndex = ValidateIndex(eyeWearColorList, eyeWearColorIndex);
+        ChangeColor(eyeWearMeshRenderer, eyeWearColorList, eyeWearIndex);
 
         //Change Apparance
         hairStyleIndex = ValidateIndex(hairStylesList, hairStyleIndex);
@@ -131,6 +141,56 @@ public class CharacterFaceSelector : MonoBehaviour
         }
     }
 
+
+
+    public void ChangeColor(MeshRenderer[] renderers,List<Color> colorList, int selectionIndex)
+    {
+        if (renderers.Length > 0 && colorList.Count > 0)
+        {
+            // validate Index and set color
+            selectionIndex = ValidateIndex(colorList, selectionIndex);
+            Color color = colorList[selectionIndex];
+
+            // Change Color for all objects
+            materialPropertyBlock = new MaterialPropertyBlock();
+            materialPropertyBlock.SetColor("_BaseColor", color);
+
+            foreach (MeshRenderer rendMesh in renderers)
+            {
+                rendMesh.SetPropertyBlock(materialPropertyBlock);
+            }
+        }
+        else
+        {
+            //no meshes added
+        }
+
+    }
+
+    public void ChangeColor(SkinnedMeshRenderer[] renderers, List<Color> colorList, int selectionIndex)
+    {
+        if (renderers.Length > 0 && colorList.Count > 0)
+        {
+            // validate Index and set color
+            selectionIndex = ValidateIndex(colorList, selectionIndex);
+            Color color = colorList[selectionIndex];
+
+            // Change Color for all objects
+            materialPropertyBlock = new MaterialPropertyBlock();
+            materialPropertyBlock.SetColor("_BaseColor", color);
+
+            foreach (SkinnedMeshRenderer rendMesh in renderers)
+            {
+                rendMesh.SetPropertyBlock(materialPropertyBlock);
+            }
+        }
+        else
+        {
+            //no meshes added
+        }
+    }
+
+
     public int ValidateIndex(List<Color> listOfColors, int selectionIndex)
     {
         if (selectionIndex >= listOfColors.Count)
@@ -157,33 +217,8 @@ public class CharacterFaceSelector : MonoBehaviour
         return selectionIndex;
     }
 
-        private void ChangeColor(MeshRenderer[] renderers,Color color)
-    {
-        materialPropertyBlock = new MaterialPropertyBlock();
-        materialPropertyBlock.SetColor("_BaseColor", color);
 
-        foreach (MeshRenderer rendMesh in renderers)
-        {
-            rendMesh.SetPropertyBlock(materialPropertyBlock);
-        }
-        // Both works
-        //renderer.material.SetColor("_BaseColor", color);
-    }
-
-    private void ChangeColor(SkinnedMeshRenderer[] renderers, Color color)
-    {
-        materialPropertyBlock = new MaterialPropertyBlock();
-        materialPropertyBlock.SetColor("_BaseColor", color);
-
-        foreach (SkinnedMeshRenderer rendMesh in renderers)
-        {
-            rendMesh.SetPropertyBlock(materialPropertyBlock);
-        }
-        // Both works
-        //renderer.material.SetColor("_BaseColor", color);
-    }
-
-    /*
+    /* //Random Color code
     private void RandomColor()
     {
         //Change Color Chache
