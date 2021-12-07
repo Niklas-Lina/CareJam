@@ -9,18 +9,18 @@ public class Talking : MonoBehaviour
     [SerializeField] public TalkOption[] talk;
     public GameObject OptionsPanel;
     Text txt;
-    bool canClick = true;
-    bool txtDone = false;
     AudioSource Audio;
     public AudioClip Voice;
     int currentOpt = 0;
     bool end = false;
+    Image bubbleImg;
 
     private void Start()
     {
         txt = transform.GetComponentInChildren<Text>();
         OptionsPanel.SetActive(false);
         gameObject.SetActive(false);
+        bubbleImg = transform.GetComponent<Image>();
     }
 
     public void StartSession(int nr)
@@ -40,9 +40,12 @@ public class Talking : MonoBehaviour
 
     IEnumerator TypeText(string message, Text txtObj, AudioClip voice, int startPause)
     {
+        bubbleImg.enabled = false;
+        txt.enabled = false;
         yield return new WaitForSeconds(startPause);
-        canClick = false;
-        txtDone = false;
+
+        bubbleImg.enabled = true;
+        txt.enabled = true;
         //sa att inga gamla options syns
         foreach (Transform child in OptionsPanel.transform)
         {
@@ -89,7 +92,6 @@ public class Talking : MonoBehaviour
             yield return new WaitForSeconds(pause);
         }
 
-        canClick = true;
         //Faces.talking = false;
 
         //@ at the end means no more options
