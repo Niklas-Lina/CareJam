@@ -15,8 +15,14 @@ public class PlayerStats : MonoBehaviour
 
     private void Start()
     {
-        powerBar.SetMaxHealth(startingPower);
-        timeBar.SetMaxHealth(startingTime);
+        if(powerBar != null)
+        {
+            powerBar.SetMaxHealth(startingPower);
+        }
+        if (timeBar != null)
+        {
+            timeBar.SetMaxHealth(startingTime);
+        }
 
         currentPower = startingPower;
         currentTime = startingTime;
