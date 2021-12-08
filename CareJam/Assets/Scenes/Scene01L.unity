@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2281,11 +2281,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3816473187712783848, guid: 2a705e58d787a774d87b5387977cd60c, type: 3}
       propertyPath: beardIndex
-      value: 12
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3816473187712783848, guid: 2a705e58d787a774d87b5387977cd60c, type: 3}
       propertyPath: moustachIndex
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3816473187712783848, guid: 2a705e58d787a774d87b5387977cd60c, type: 3}
       propertyPath: hairColorIndex
@@ -3736,7 +3736,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3053107165106539976, guid: 6fd9b6453ac61a04798fb1603f9d8370, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1.74
       objectReference: {fileID: 0}
     - target: {fileID: 3053107165106539976, guid: 6fd9b6453ac61a04798fb1603f9d8370, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3744,7 +3744,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3053107165106539976, guid: 6fd9b6453ac61a04798fb1603f9d8370, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -2.48
       objectReference: {fileID: 0}
     - target: {fileID: 3053107165106539976, guid: 6fd9b6453ac61a04798fb1603f9d8370, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6747,11 +6747,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3816473187712783848, guid: 052a971dec69431428bcafa3089d8904, type: 3}
       propertyPath: hairColorIndex
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3816473187712783848, guid: 052a971dec69431428bcafa3089d8904, type: 3}
       propertyPath: hairStyleIndex
-      value: 21
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 3816473187712783848, guid: 052a971dec69431428bcafa3089d8904, type: 3}
       propertyPath: noseColorIndex

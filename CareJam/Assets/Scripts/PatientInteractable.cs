@@ -7,10 +7,13 @@ public class PatientInteractable : Interactable
     public Talking talk;
     bool clicked = false;
 
+    GameObject Player;
+
     private void Start()
     {
-        //inget ska syans ibörjan av spelet
+        Player = GameObject.FindGameObjectWithTag("Player");
     }
+
 
     public override void Interact()
     {
@@ -19,6 +22,7 @@ public class PatientInteractable : Interactable
             talk.gameObject.SetActive(true);
             talk.StartSession(0);
             clicked = true;
+            Player.GetComponent<PlayerController>().CanMove = false;
         }
 
         base.Interact();
