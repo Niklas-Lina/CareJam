@@ -7,10 +7,14 @@ public class PatientInteractable : Interactable
     public Talking talk;
     bool clicked = false;
 
+    public GameObject interactionMarker;
+
     GameObject Player;
 
     private void Start()
     {
+        interactionMarker.SetActive(true);
+
         Player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -19,6 +23,8 @@ public class PatientInteractable : Interactable
     {
         if (!clicked)
         {
+            interactionMarker.SetActive(false);
+
             talk.gameObject.SetActive(true);
             talk.StartSession(0);
             clicked = true;
