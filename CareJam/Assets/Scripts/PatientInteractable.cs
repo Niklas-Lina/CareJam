@@ -6,6 +6,7 @@ public class PatientInteractable : Interactable
 {
     public Talking talk;
     bool clicked = false;
+    MainCtrl GameCtrl;
 
     public GameObject interactionMarker;
 
@@ -16,6 +17,7 @@ public class PatientInteractable : Interactable
         interactionMarker.SetActive(true);
 
         Player = GameObject.FindGameObjectWithTag("Player");
+        GameCtrl = MainCtrl.gameCtrl;
     }
 
 
@@ -28,6 +30,7 @@ public class PatientInteractable : Interactable
             talk.gameObject.SetActive(true);
             talk.StartSession(0);
             clicked = true;
+            GameCtrl.PatientAmount--;
             Player.GetComponent<PlayerController>().CanMove = false;
         }
 
