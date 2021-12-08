@@ -6,10 +6,11 @@ public class ClickObj : MonoBehaviour
 {
     public Talking talk;
     bool clicked = false;
+    GameObject Player;
 
     private void Start()
     {
-        //Inga options ska synnas i borjan av spelet
+        Player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
@@ -29,6 +30,7 @@ public class ClickObj : MonoBehaviour
                     talk.gameObject.SetActive(true);
                     talk.StartSession(0);
                     clicked = true;
+                    Player.GetComponent<PlayerController>().CanMove = false;
 
                 }
 
