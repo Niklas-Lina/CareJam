@@ -14,6 +14,7 @@ public class Talking : MonoBehaviour
     int currentOpt = 0;
     bool end = false;
     Image bubbleImg;
+    GameObject Player;
 
     private void Start()
     {
@@ -21,6 +22,7 @@ public class Talking : MonoBehaviour
         OptionsPanel.SetActive(false);
         gameObject.SetActive(false);
         bubbleImg = transform.GetComponent<Image>();
+        Player = GameObject.FindGameObjectWithTag("Player");
     }
 
     public void StartSession(int nr)
@@ -103,7 +105,7 @@ public class Talking : MonoBehaviour
         { 
             yield return new WaitForSeconds(3);
             gameObject.SetActive(false);
-
+            Player.GetComponent<PlayerController>().CanMove = true;
         }
         yield return 0;
     }

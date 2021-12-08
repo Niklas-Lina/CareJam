@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 
     public LayerMask layermaskMovement;
 
+    public bool CanMove = true;
     Camera cam;
     PlayerMotor playerMotor;
 
@@ -23,7 +24,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // !EventSystem.current.IsPointerOverGameObject() - does that the raycast wont get sent if over ui elements.
-        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject() && CanMove)
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;

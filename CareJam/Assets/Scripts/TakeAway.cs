@@ -6,9 +6,11 @@ using UnityEngine.UI;
 public class TakeAway : MonoBehaviour
 {
     public Slider slider;
+    public Text nr;
 
     public void ChangeSlide(int amount)
     {
         slider.value = slider.value - amount;
+        nr.text = slider.value.ToString();
     }
 }
