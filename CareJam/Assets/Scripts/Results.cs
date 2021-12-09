@@ -12,38 +12,43 @@ public class Results : MonoBehaviour
 
     public void SetResults(float Time, float Health)
     {
-        if(Time >10)
+        // Det var tidigare ett logikfel att mitten alltid togs måste använda else if eller använda två checks med && (and)
+
+        if (Time >10)
         {
             txtTime.text = YourTimeResult[0];
         }
-
-        if (Time > 5)
+        else if (Time >= 5)
         {
             txtTime.text = YourTimeResult[1];
         }
-
-        if (Time < 5)
+        else if (Time < 5)
         {
             txtTime.text = YourTimeResult[2];
         }
+        else
+        {
+            txtTime.text = "bugg";
+        }
 
-
+        
         if (Health > 10)
         {
             txtHealth.text = YourHealthResult[0];
         }
-
-
-        if (Health > 5)
+        else if (Health >= 5)
         {
             txtHealth.text = YourHealthResult[1];
         }
-
-
-        if (Health < 5)
+        else if (Health < 5)
         {
             txtHealth.text = YourHealthResult[2];
         }
+        else
+        {
+            txtTime.text = "bugg";
+        }
+
 
     }
 

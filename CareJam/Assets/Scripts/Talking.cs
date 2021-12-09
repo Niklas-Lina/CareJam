@@ -24,7 +24,22 @@ public class Talking : MonoBehaviour
         gameObject.SetActive(false);
         bubbleImg = transform.GetComponent<Image>();
         Player = GameObject.FindGameObjectWithTag("Player");
-        ctrl = MainCtrl.gameCtrl;
+        
+        //ctrl = MainCtrl.gameCtrl;
+        GameObject levelManager = GameObject.FindGameObjectWithTag("LevelManager");
+        if (levelManager != null)
+        {
+            ctrl = levelManager.GetComponent<MainCtrl>();
+            if (ctrl == null)
+            {
+                Debug.LogError("No MainCtrl component on the level manager");
+            }
+        }
+        else
+        {
+            Debug.LogError("No Level Manager in Scene! Add the Level Manager Prefab!");
+        }
+
     }
 
     public void StartSession(int nr)

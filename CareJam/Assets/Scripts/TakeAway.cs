@@ -12,7 +12,20 @@ public class TakeAway : MonoBehaviour
 
    void Start()
     {
-        ctrl = MainCtrl.gameCtrl;
+        //ctrl = MainCtrl.gameCtrl;
+        GameObject levelManager = GameObject.FindGameObjectWithTag("LevelManager");
+        if (levelManager != null)
+        {
+            ctrl = levelManager.GetComponent<MainCtrl>();
+            if(ctrl == null)
+            {
+                Debug.LogError("No MainCtrl component on the level manager");
+            }
+        }
+        else
+        {
+            Debug.LogError("No Level Manager in Scene! Add the Level Manager Prefab!");
+        }
     }
 
     public void ChangeSlide(int amount)

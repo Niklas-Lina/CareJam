@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7097139726111080599}
   - component: {fileID: 7097139726111080598}
   m_Layer: 5
-  m_Name: Pause Menue - text (1)
+  m_Name: Credits text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 35}
-  m_SizeDelta: {x: 700, y: 150}
+  m_AnchoredPosition: {x: 0, y: -62.98}
+  m_SizeDelta: {x: 700, y: 669.96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7097139726111080599
 CanvasRenderer:
@@ -65,19 +65,30 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Game made by:
+  m_text: '-Game made by-
 
     Lina Lundsted
 
     Niklas Fischer
 
 
+    -Music by-
+
+    Jorge
+    Adorni
+
+
     -Story Help-
 
-    Thanks
-    to Cecilia Hedeiln
+    Thanks to Cecilia Hedeiln
 
-    And all the input form the Code Coven Discord!'
+    And all the input
+    form the Code Coven Discord!
+
+
+    -Tools used-
+
+    Unity, Mixamo, 3D software'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 75471274c56438e4fae23564c24a0edc, type: 2}
   m_sharedMaterial: {fileID: -3820769698993867074, guid: 75471274c56438e4fae23564c24a0edc, type: 2}
@@ -112,7 +123,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 1
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -213,7 +224,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 1080825480604336155, guid: b5082412adb406940b2db37b5e3fc3ac, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -346,7 +357,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'The Caretaker
 
-    Main Menue'
+    Main Menu'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 75471274c56438e4fae23564c24a0edc, type: 2}
   m_sharedMaterial: {fileID: -3820769698993867074, guid: 75471274c56438e4fae23564c24a0edc, type: 2}
@@ -968,14 +979,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7264151, g: 0.14467469, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: -6595680761151332689, guid: b5082412adb406940b2db37b5e3fc3ac, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1022,7 +1033,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -197, y: -388}
+  m_AnchoredPosition: {x: -150, y: -388}
   m_SizeDelta: {x: 400, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7097139726772578865
@@ -1069,13 +1080,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 7097139727003765583}
   m_HandleRect: {fileID: 7097139726761866292}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 0.7
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Soundtrack, Assembly-CSharp
+        m_MethodName: ChangeVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7097139726908078758
 GameObject:
   m_ObjectHideFlags: 0
@@ -1268,15 +1291,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7924528, g: 0.58495873, b: 0.53453183, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 8160775752198118580, guid: b5082412adb406940b2db37b5e3fc3ac, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1644,7 +1667,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: -9136572144232859775, guid: b5082412adb406940b2db37b5e3fc3ac, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1777,7 +1800,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 1080825480604336155, guid: b5082412adb406940b2db37b5e3fc3ac, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2025,7 +2048,7 @@ GameObject:
   - component: {fileID: 7097139727802151345}
   - component: {fileID: 7097139727802151344}
   m_Layer: 5
-  m_Name: Pause Menue - text
+  m_Name: Credits - header - text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2205,15 +2228,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.9656088, b: 0.3066038, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 8160775752198118580, guid: b5082412adb406940b2db37b5e3fc3ac, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

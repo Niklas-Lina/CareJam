@@ -6,7 +6,7 @@ public class PatientInteractable : Interactable
 {
     public Talking talk;
     bool clicked = false;
-    MainCtrl GameCtrl;
+    MainCtrl ctrl;
 
     public GameObject interactionMarker;
 
@@ -17,7 +17,21 @@ public class PatientInteractable : Interactable
         interactionMarker.SetActive(true);
 
         Player = GameObject.FindGameObjectWithTag("Player");
-        GameCtrl = MainCtrl.gameCtrl;
+
+        //ctrl = MainCtrl.gameCtrl;
+        GameObject levelManager = GameObject.FindGameObjectWithTag("LevelManager");
+        if (levelManager != null)
+        {
+            ctrl = levelManager.GetComponent<MainCtrl>();
+            if (ctrl == null)
+            {
+                Debug.LogError("No MainCtrl component on the level manager");
+            }
+        }
+        else
+        {
+            Debug.LogError("No Level Manager in Scene! Add the Level Manager Prefab!");
+        }
     }
 
 
@@ -30,7 +44,7 @@ public class PatientInteractable : Interactable
             talk.gameObject.SetActive(true);
             talk.StartSession(0);
             clicked = true;
-            GameCtrl.PatientAmount--;
+            ctrl.PatientAmount--;
             Player.GetComponent<PlayerController>().CanMove = false;
         }
 
