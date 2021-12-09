@@ -44,7 +44,9 @@ public class PatientInteractable : Interactable
             talk.gameObject.SetActive(true);
             talk.StartSession(0);
             clicked = true;
+            
             ctrl.PatientAmount--;
+
             Player.GetComponent<PlayerController>().CanMove = false;
         }
 
