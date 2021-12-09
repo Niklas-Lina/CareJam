@@ -22,13 +22,14 @@ public class MainCtrl : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
 
+        if(EndPanel != null)
         EndPanel.SetActive(false);
 
     }
     void Update()
     {
         
-        if(PatientAmount <= 0 && END)
+        if(PatientAmount <= 0 && END && EndPanel != null)
         {
             EndPanel.SetActive(true);
             EndPanel.GetComponent<Results>().SetResults(Time, Health);
